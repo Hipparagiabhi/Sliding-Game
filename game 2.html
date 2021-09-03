@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            position:relative;    
+        }
+        .box{
+            width:500px;
+            height:500px;
+            background: green; 
+            box-sizing: border-box;
+            border:1px solid black;
+            
+        }
+        .box:nth-child(1){
+            position:absolute;
+             left: 0;
+            top:0; 
+
+        }
+         .box:nth-child(2){
+            position:absolute;
+             left: 500px;
+            top:0; 
+
+         }
+        .box:nth-child(3){
+            position:absolute;
+             left: 0;
+            top: 500px;; 
+
+         }
+        .box:nth-child(4){
+            position:absolute;
+            left: 500px;
+            top:500px; 
+
+         } 
+
+        .test{
+
+            max-width: 100%;
+
+        }
+
+        /* .button{
+            margin-left: 1000px;
+        } */
+
+       
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="box1"><img class="test" src="dog.jpg" alt="this is dog">
+          </div>
+         <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box" id="box4">4</div> 
+
+        
+
+       
+    
+    </div>
+
+    
+<script>
+  let a=  document.getElementById("box1");
+    
+ let b= document.getElementById("box2");
+ console.log(b);
+  let c= document.getElementById("box3");
+ console.log(c);
+ let d=document.getElementById("box4");
+console.log(d);
+
+a.style.left="0px";
+a.style.top="0px";
+a.style.backgroundColor="green";
+
+ b.style.left="500px";
+ b.style.top="0px";
+ b.style.backgroundColor="green";
+
+ c.style.left="0px";
+ c.style.top="500px";
+ c.style.backgroundColor="green";
+
+  d.style.left="500px";
+ d.style.top="500px";
+  d.style.backgroundColor="green"; 
+
+
+
+ function getbox(key="ArrowRight"){
+
+  let left= parseInt(a.style.left);
+  let top= parseInt(a.style.top);
+
+    if (key=="ArrowRight"){
+        left += 500;
+   }
+   else if (key=="ArrowLeft"){
+        left = 0;
+   }
+   else if (key=="ArrowDown"){
+        top +=500;
+   }
+
+   else if (key=="ArrowUp"){
+       top -=500;
+   }
+  
+    if(b.style.left==(left+"px")&&(b.style.top==(top+"px"))){
+        return b
+    }
+    if(c.style.left==(left+"px")&&(c.style.top==(top+"px"))){
+        return c
+    }
+    if(d.style.left==(left+"px")&&(d.style.top==(top+"px"))){
+        return d
+    }
+
+ }
+
+
+
+
+
+  window.addEventListener("keydown", function(e){
+
+    let box= getbox(e.key)
+
+ let temp={}
+
+ temp["left"]=box.style.left;
+ temp["top"]=box.style.top;
+
+ box.style.top=a.style.top;
+ box.style.left=a.style.left;
+
+ a.style.left=temp.left;
+ a.style.top=temp.top; 
+
+
+  });
+
+
+
+</script>
+
+</body>
+</html>
